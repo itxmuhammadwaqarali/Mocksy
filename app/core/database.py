@@ -2,7 +2,7 @@ from collections.abc import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, declarative_base, sessionmaker
 
-DATABASE_URL = "postgresql+psycopg2://ali:123@localhost:5432/mocksy"
+from app.core.config import DATABASE_URL
 
 engine = create_engine(DATABASE_URL)
 

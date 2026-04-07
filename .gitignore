@@ -5,9 +5,8 @@
 .venv/
 venv/
 env/
-ENV/
 myenv/
-.env/
+.env
 # Python bytecode
 __pycache__/
 *.py[cod]
