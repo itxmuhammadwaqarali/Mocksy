@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 import os, shutil
 from app.core.database import get_db
  # JWT middleware
-import crud.cv as cv_crud
-from crud.auth import get_current_user
+import app.crud.cv as cv_crud
+from app.crud.auth import get_current_user
 
 router = APIRouter(prefix="/cv", tags=["CV"])
 UPLOAD_DIR = "uploads/cvs"
