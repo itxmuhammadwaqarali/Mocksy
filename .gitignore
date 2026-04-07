@@ -4,9 +4,7 @@
 # Python virtual environment
 .venv/
 venv/
-env/
-ENV/
-
+.env/
 # Python bytecode
 __pycache__/
 *.py[cod]
