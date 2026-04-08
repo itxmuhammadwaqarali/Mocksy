@@ -5,7 +5,7 @@ import re
 
 class AIService:
     OLLAMA_URL = "http://localhost:11434/api/generate"
-    MODEL = "llama3"  # 🔥 llama3 ki jagah fast model use karo
+    MODEL = "llama3"
 
     @staticmethod
     def _extract_json(text: str):

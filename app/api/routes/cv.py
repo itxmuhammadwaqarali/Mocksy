@@ -1,7 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
 from sqlalchemy.orm import Session
 import os
-import shutil
 import uuid
 
 from app.core.database import get_db
