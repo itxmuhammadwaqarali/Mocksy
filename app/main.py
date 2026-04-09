@@ -1,8 +1,4 @@
-from pathlib import Path
-
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
-
 from app.api.routes.auth import router as auth_router
 from app.api.routes.cv import router as cv_router
 from app.api.routes.interview import router as interview_router
