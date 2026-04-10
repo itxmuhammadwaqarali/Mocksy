@@ -10,6 +10,7 @@ class InterviewStartResponse(BaseModel):
     interview_id: int
     status: str
     next_question: str
+    powered_by: str = "unknown"
 
 
 class InterviewTurnRequest(BaseModel):
@@ -28,10 +29,12 @@ class InterviewContinueResponse(BaseModel):
     interview_id: int
     status: str
     next_question: str
+    powered_by: str = "unknown"
 
 
 class InterviewExitResponse(BaseModel):
     interview_id: int
     status: str
     result: InterviewEvaluationResult
+    powered_by: str = "unknown"
 
