@@ -55,3 +55,16 @@ async def upload_cv(
         "text_preview": extracted_text[:300],
         "message": "CV uploaded and parsed. Start interview to get AI questions."
     }
+
+
+@router.get("/")
+def list_cvs(db: Session = Depends(get_db), current_user=Depends(get_current_user)):
+    cvs = cv_crud.get_user_cvs(db, current_user)
+    return [
+        {
+            "id": cv.id,
+            "file_path": cv.file_path,
+            "text_preview": (cv.extracted_data or {}).get("text", "")[:300],
+        }
+        for cv in cvs
+    ]
