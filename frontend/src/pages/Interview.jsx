@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import ChatBubble from '../components/ChatBubble';
+import VideoInterview from '../components/VideoInterview';
 
 export default function Interview() {
   const { token } = useAuth();
@@ -9,6 +10,7 @@ export default function Interview() {
   const navigate = useNavigate();
   const cv_id = searchParams.get('cv_id');
   const role = searchParams.get('role');
+  const mode = searchParams.get('mode') || 'chat';
 
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -19,6 +21,10 @@ export default function Interview() {
   
   const socketRef = useRef(null);
   const messagesEndRef = useRef(null);
+
+  if (mode === 'video') {
+    return <VideoInterview cv_id={cv_id} role={role} token={token} />;
+  }
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
