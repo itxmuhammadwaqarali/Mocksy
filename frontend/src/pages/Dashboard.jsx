@@ -11,6 +11,7 @@ export default function Dashboard() {
   const [showModal, setShowModal] = useState(false);
   const [selectedCv, setSelectedCv] = useState(null);
   const [role, setRole] = useState('');
+  const [mode, setMode] = useState('chat');
   const navigate = useNavigate();
 
   const fetchCvs = async () => {
@@ -67,7 +68,7 @@ export default function Dashboard() {
 
   const confirmStart = (e) => {
     e.preventDefault();
-    navigate(`/interview?cv_id=${selectedCv.id}&role=${encodeURIComponent(role)}`);
+    navigate(`/interview?cv_id=${selectedCv.id}&role=${encodeURIComponent(role)}&mode=${mode}`);
   };
 
   return (
@@ -126,6 +127,24 @@ export default function Dashboard() {
               Specify the role you are interviewing for to get tailored questions.
             </p>
             <form onSubmit={confirmStart}>
+              
+              <div className="mode-selector">
+                <div 
+                  className={`mode-card ${mode === 'chat' ? 'selected' : ''}`}
+                  onClick={() => setMode('chat')}
+                >
+                  <h4>💬 Text Chat</h4>
+                  <p>Standard typing</p>
+                </div>
+                <div 
+                  className={`mode-card ${mode === 'video' ? 'selected' : ''}`}
+                  onClick={() => setMode('video')}
+                >
+                  <h4>📸 Video Call</h4>
+                  <p>Immersive experience</p>
+                </div>
+              </div>
+
               <div className="input-group">
                 <label>Target Role</label>
                 <input 
