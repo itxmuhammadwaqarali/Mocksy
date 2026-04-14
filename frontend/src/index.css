@@ -724,3 +724,172 @@ a:hover {
   background: var(--warning);
   animation: dotPulse 1s infinite;
 }
+
+/* ── Video Interview ───────────────────────────────────────── */
+.video-layout {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  height: calc(100vh - 200px);
+  min-height: 500px;
+}
+
+@media (max-width: 768px) {
+  .video-layout {
+    flex-direction: column;
+    height: auto;
+  }
+  .ai-avatar-container, .user-video-container {
+    aspect-ratio: 16/9;
+  }
+}
+
+.ai-avatar-container, .user-video-container {
+  flex: 1;
+  background: #000;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Simulated AI Avatar */
+.ai-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  box-shadow: 0 0 30px var(--accent-glow);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.ai-avatar.speaking {
+  animation: aiSpeaking 0.5s infinite alternate;
+}
+
+.ai-avatar::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  opacity: 0;
+}
+
+.ai-avatar.speaking::before {
+  animation: aiRings 1s infinite;
+}
+
+@keyframes aiSpeaking {
+  0% { transform: scale(1); box-shadow: 0 0 30px var(--accent-glow); }
+  100% { transform: scale(1.05); box-shadow: 0 0 60px var(--accent); }
+}
+
+@keyframes aiRings {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Captions Overlay */
+.captions-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 20px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  pointer-events: none; /* Let clicks pass through to mic button */
+}
+
+.caption-text {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+  max-width: 90%;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);
+  min-height: 2em;
+  letter-spacing: 0.02em;
+}
+
+.user-video-container .video-overlay {
+  pointer-events: auto; /* Mic button needs to be clickable */
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Mirror effect */
+}
+
+.mic-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid var(--border-glass);
+  font-size: 1.5rem;
+}
+.mic-btn.active {
+  background: var(--error);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  animation: pulseMic 1.5s infinite;
+}
+
+@keyframes pulseMic {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.mode-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.mode-card {
+  padding: 16px;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  background: var(--bg-glass);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+.mode-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+.mode-card h4 {
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+.mode-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
