@@ -1,17 +1,17 @@
-# 🚀 Mocksy: AI Video Interview Platform
+# Mocksy: AI Video Interview Platform
 
 Mocksy is a stateful, dynamic AI-powered mock interview platform that simulates real-world job interviews. It allows candidates to upload their resumes and undergo hands-free, face-to-face video interviews or text chat sessions tailored precisely to their CV and target role.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Backend**: FastAPI (Python), WebSockets (real-time streaming), Postgres (SQLAlchemy),
 - **Frontend**: React (Vite), CSS Layouts, Web Speech API (Native Speech-to-Text & Text-to-Speech)
 - **AI Brain**: Groq Cloud API (Low Tier Latency LLM responses)
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these steps to run the full application locally.
 
@@ -57,7 +57,7 @@ Open a **second** terminal and navigate to the `frontend/` directory.
 
 ---
 
-## 🌐 The User Flow
+## The User Flow
 
 Once both servers are running, access the frontend (typically `http://localhost:5174`) to experience the platform.
 
