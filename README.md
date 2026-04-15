@@ -85,6 +85,8 @@ If the Video Call is selected:
 1. **Click "End Interview"**: The camera explicitly shuts down. Note: The user can explicitly send `exit` in the text command too.
 2. **Scorecard**: The backend reviews the entire conversation history, evaluates accuracy and tone, and returns a comprehensive scorecard (Overall Score, Summary, Strengths, and Improvements) which the user can read to improve their interview skills.
 
+## Frontend REPO Link: https://github.com/itxmuhammadwaqarali/mocksy_frontend
+
 ---
 
 *Mocksy effectively mirrors the stress and dynamics of real AI filtering gates and technical interviews!*
