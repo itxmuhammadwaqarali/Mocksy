@@ -10,7 +10,8 @@ from app.crud.auth import get_current_user
 
 router = APIRouter(prefix="/cv", tags=["CV"])
 
-UPLOAD_DIR = "uploads/cvs"
+# ✅ Use /tmp for Vercel (read-only filesystem)
+UPLOAD_DIR = "/tmp/uploads/cvs" if os.getenv("VERCEL") else "uploads/cvs"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
